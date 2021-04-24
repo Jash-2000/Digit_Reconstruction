@@ -11,6 +11,25 @@ I have used Tensorflow-Keras for this repository.
 
 ## Models implemented and a brief description
 
+**Autoencoders (AE)** are neural networks that aim to copy their inputs to their outputs. They work by compressing the input into a latent-space representation and then reconstructing the output from this representation. Different types of autoencoders used are : 
+
+```
+* **Vanilla autoencoder** - In its simplest form, the autoencoder is a three layers net, i.e. a neural net with one hidden layer. The input and output are the same, and we learn how to reconstruct the input, for example using the adam optimizer and the mean squared error loss function.
+
+* **Multilayer autoencoder** - If one hidden layer is not enough, we can obviously extend the autoencoder to more hidden layers.
+
+* **Convolutional autoencoder** - Using autoencoders with Convolutions instead of Fully-connected layers using images (3D vectors) instead of flattened 1D vectors. The input image is downsampled to give a latent representation of smaller dimensions and force the autoencoder to learn a compressed version of the images.
+```
+
+There are other ways we can constraint the reconstruction of an autoencoder than to impose a hidden layer of smaller dimension than the input. Rather than limiting the model capacity by keeping the encoder and decoder shallow and the code size small, **Regularized Autoencoders** use a loss function that encourages the model to have other properties besides the ability to copy its input to its output
+
+```
+* **Sparse autoencoder** - Sparse autoencoders are typically used to learn features for another task such as classification. An autoencoder that has been regularized to be sparse must respond to unique statistical features of the dataset it has been trained on, rather than simply acting as an identity function. In this way, training to perform the copying task with a sparsity penalty can yield a model that has learned useful features as a byproduct.
+
+* **Denoising autoencoder** - Rather than adding a penalty to the loss function, we can obtain an autoencoder that learns something useful by changing the reconstruction error term of the loss function. This can be done by adding some noise to the input image and make the autoencoder learn to remove it. By this means, the encoder will extract the most important features and learn a more robust representation of the data.
+
+```
+
 ---
 
 ## Generated outputs of each network
@@ -21,5 +40,6 @@ I have used Tensorflow-Keras for this repository.
 
 * Image Denoising
 
+![Denoise](https://user-images.githubusercontent.com/47540320/115971741-d6451c00-a567-11eb-9ccf-883839bf9405.JPG)
 
 
