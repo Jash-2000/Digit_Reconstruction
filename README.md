@@ -30,14 +30,16 @@ There are other ways we can constraint the reconstruction of an autoencoder than
 
   * **Denoising autoencoder** - Rather than adding a penalty to the loss function, we can obtain an autoencoder that learns something useful by changing the reconstruction error term of the loss function. This can be done by adding some noise to the input image and make the autoencoder learn to remove it. By this means, the encoder will extract the most important features and learn a more robust representation of the data.
 
-3. **Generative Adverserial Networks (GANs)
+3. **Variational Autoencoders (VAE)**
+```
+Standard autoencoders learn to generate compact representations and reconstruct their inputs well, but asides from a few applications like denoising autoencoders, they are fairly limited. The fundamental problem with autoencoders, for generation, is that the latent space they convert their inputs to and where their encoded vectors lie, may not be continuous, or allow easy interpolation.
+
+Variational Autoencoders (VAEs) have one fundamentally unique property that separates them from vanilla autoencoders, and it is this property that makes them so useful for generative modeling: their latent spaces are, by design, continuous, allowing easy random sampling and interpolation. It achieves this by doing something that seems rather surprising at first: making its encoder not output an encoding vector of size n, rather, outputting two vectors of size n: a vector of means, μ, and another vector of standard deviations, σ.
+```
+
+4. **Generative Adversarial Networks (GANs)
 ```
 Generative Adversarial Networks or GANs are a deep-learning-based generative model that is used for Unsupervised Learning. It is basically a system where two competing Neural Networks compete with each other to create or generate variations in the data. In GANs, there is a Generator network that takes a sample and generates a sample of data, and after this, the Discriminator network decides whether the data is generated or taken from the real sample using a binary Classification problem with the help of a sigmoid function that gives the output in the range 0 to 1.
-```
-
-4. **Variational Autoencoders (VAE)**
-```
-
 ```
 
 ---
